@@ -15,7 +15,7 @@ export default function App() {
   return (
     <div className="min-h-screen pb-24 md:pb-0">
       <DesktopNav />
-      <main className="pt-16 md:pt-20">
+      <main className="pt-[max(env(safe-area-inset-top),0.5rem)] md:pt-20">
         <Routes>
           <Route path="/" element={<Closet />} />
           <Route path="/builder" element={<OutfitBuilder />} />

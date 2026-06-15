@@ -100,9 +100,9 @@ export function OutfitBuilder() {
         </div>
       </header>
 
-      <div className="grid lg:grid-cols-[1fr_420px] gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_420px] gap-6">
         {/* Closet picker */}
-        <section className="rounded-3xl bg-white/60 border border-ink/5 p-4 md:p-6">
+        <section className="min-w-0 rounded-3xl bg-white/60 border border-ink/5 p-4 md:p-6">
           <CategoryTabs value={filter} onChange={setFilter} counts={counts} />
 
           <div className="mt-5">

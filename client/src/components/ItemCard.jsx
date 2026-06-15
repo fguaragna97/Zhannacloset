@@ -1,5 +1,5 @@
 import { assetUrl } from '../lib/api.js';
-import { categoryLabel } from '../lib/categories.js';
+import { shortCategoryLabel } from '../lib/categories.js';
 
 export function ItemCard({ item, onDelete, onClick, selected, selectable }) {
   return (
@@ -23,7 +23,7 @@ export function ItemCard({ item, onDelete, onClick, selected, selectable }) {
       <div className="px-3 py-2.5 flex items-center justify-between gap-2">
         <div className="min-w-0">
           <p className="text-[11px] uppercase tracking-[0.14em] text-taupe-600 truncate">
-            {categoryLabel(item.category)}
+            {shortCategoryLabel(item.category)}
           </p>
           <p className="text-sm font-medium text-ink truncate">{item.label}</p>
         </div>

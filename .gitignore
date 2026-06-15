@@ -12,3 +12,4 @@ uploads/mannequin/*
 !uploads/thumbs/.gitkeep
 !uploads/mannequin/.gitkeep
 .vercel
+.env*.local
