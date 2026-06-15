@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background-color: #FAF8F5;
+    color: #1C1C1E;
+    font-feature-settings: 'ss01' on, 'cv11' on;
+  }
+  h1, h2, h3, h4 {
+    font-family: '"Playfair Display"', Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hidden::-webkit-scrollbar { display: none; }
+  .scrollbar-hidden { scrollbar-width: none; }
+
+  .text-balance { text-wrap: balance; }
+
+  .grain {
+    background-image: radial-gradient(rgba(28,28,30,0.04) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+}
