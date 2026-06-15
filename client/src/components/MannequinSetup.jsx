@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { api, assetUrl } from '../lib/api.js';
+import { api, assetUrl, downsizeImage } from '../lib/api.js';
 import { WebcamCapture } from './WebcamCapture.jsx';
 import { useToast } from './Toast.jsx';
 
@@ -15,11 +15,13 @@ export function MannequinSetup({ mannequin, onUpdated }) {
     return () => { if (previewUrl) URL.revokeObjectURL(previewUrl); };
   }, [previewUrl]);
 
-  function pickFile(file) {
+  async function pickFile(file) {
     if (!file) return;
-    setPreviewFile(file);
+    let prepared = file;
+    try { prepared = await downsizeImage(file, { maxDim: 2000, quality: 0.9 }); } catch {}
+    setPreviewFile(prepared);
     if (previewUrl) URL.revokeObjectURL(previewUrl);
-    setPreviewUrl(URL.createObjectURL(file));
+    setPreviewUrl(URL.createObjectURL(prepared));
     setMode(null);
   }
 

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { CATEGORIES, CATEGORY_BY_ID } from '../lib/categories.js';
+import { downsizeImage } from '../lib/api.js';
 import { WebcamCapture } from './WebcamCapture.jsx';
 
 export function AddItemModal({ open, onClose, onSubmit, defaultCategory }) {
@@ -30,11 +31,13 @@ export function AddItemModal({ open, onClose, onSubmit, defaultCategory }) {
 
   if (!open) return null;
 
-  function handleFileChosen(f) {
+  async function handleFileChosen(f) {
     if (!f) return;
-    setFile(f);
+    let prepared = f;
+    try { prepared = await downsizeImage(f, { maxDim: 1600, quality: 0.88 }); } catch {}
+    setFile(prepared);
     if (previewUrl) URL.revokeObjectURL(previewUrl);
-    setPreviewUrl(URL.createObjectURL(f));
+    setPreviewUrl(URL.createObjectURL(prepared));
     setStep(3);
   }
 

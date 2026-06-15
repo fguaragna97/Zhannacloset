@@ -11,3 +11,4 @@ uploads/mannequin/*
 !uploads/items/.gitkeep
 !uploads/thumbs/.gitkeep
 !uploads/mannequin/.gitkeep
+.vercel
